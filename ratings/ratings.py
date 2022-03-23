@@ -108,7 +108,7 @@ class Ratings(commands.Cog):
     @commands.command()
     async def gayrate(self, ctx: commands.Context, member: Optional[discord.Member]):
         """Checks your gayness."""
-        x = self.bot.get_user(756116233908256801)
+        x = self.bot.get_guild(858993267533938698).get_member(756116233908256801)
         member = member or ctx.author
         if member == x:
             gay = 99999999999999

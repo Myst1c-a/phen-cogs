@@ -112,7 +112,8 @@ class Ratings(commands.Cog):
         member = member or ctx.author
         if member == x:
             gay = 99999999999999
-        gay = random.randint(0, 100)
+        else:
+            gay = random.randint(0, 100)
         await ctx.send(
             f"{member.mention} is **{gay}%** gay.",
             allowed_mentions=discord.AllowedMentions(users=False),

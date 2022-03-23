@@ -106,12 +106,26 @@ class Ratings(commands.Cog):
         
         
     @commands.command()
+    async def gayrate(self, ctx: commands.Context, member: Optional[discord.Member]):
+        """Checks your gayness."""
+        x = self.bot.get_user(756116233908256801)
+        member = member or ctx.author
+        if member == x:
+            gay = 99999999999999
+        gay = random.randint(0, 100)
+        await ctx.send(
+            f"{member.mention} is **{gay}%** gay.",
+            allowed_mentions=discord.AllowedMentions(users=False),
+        )
+        
+        
+    @commands.command()
     async def cuterate(self, ctx: commands.Context, member: Optional[discord.Member]):
         """Checks your cuteness."""
         member = member or ctx.author
         cute = random.randint(0, 100)
         await ctx.send(
-            f"{member.mention} is **{cute}%** cute today.",
+            f"{member.mention} is **{cute}%** cute.",
             allowed_mentions=discord.AllowedMentions(users=False),
         )
     

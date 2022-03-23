@@ -79,7 +79,6 @@ class Ratings(commands.Cog):
     async def iqrate(self, ctx: commands.Context, member: Optional[discord.Member]):
         """100% legit IQ test."""
         member = member or ctx.author
-        random.seed(member.id + self.bot.user.id)
         if await self.bot.is_owner(member):
             iq = random.randint(200, 500)
         else:
@@ -91,7 +90,7 @@ class Ratings(commands.Cog):
         else:
             emoji = self.bot.get_emoji(758821971319586838) or "😔"
         await ctx.send(
-            f"{member.mention} has an IQ of {iq} {emoji}",
+            f"{member.mention} has an IQ of **{iq}** {emoji}",
             allowed_mentions=discord.AllowedMentions(users=False),
         )
 
@@ -99,9 +98,20 @@ class Ratings(commands.Cog):
     async def sanitycheck(self, ctx: commands.Context, member: Optional[discord.Member]):
         """Check your sanity."""
         member = member or ctx.author
-        random.seed(str(member.id) + str(date.today().strftime("%j")) + str(self.bot.user.id))
         sanity = random.randint(0, 100)
         await ctx.send(
-            f"{member.mention} is {sanity}% sane today.",
+            f"{member.mention} is **{sanity}%** sane.",
             allowed_mentions=discord.AllowedMentions(users=False),
         )
+        
+        
+    @commands.command()
+    async def cuterate(self, ctx: commands.Context, member: Optional[discord.Member]):
+        """Checks your cuteness."""
+        member = member or ctx.author
+        cute = random.randint(0, 100)
+        await ctx.send(
+            f"{member.mention} is **{cute}%** cute today.",
+            allowed_mentions=discord.AllowedMentions(users=False),
+        )
+    
